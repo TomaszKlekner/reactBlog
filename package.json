@@ -1,0 +1,24 @@
+{
+  "name": "react-blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "client": "npm run dev --prefix client",
+    "server": "",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "React",
+    "TypeScript",
+    "Mongo",
+    "Node",
+    "Express"
+  ],
+  "author": "Tomasz Klekner",
+  "license": "ISC",
+  "description": "MERN stack Blog",
+  "dependencies": {
+    "concurrently": "^8.1.0"
+  }
+}
