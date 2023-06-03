@@ -1,6 +1,6 @@
 import "./single-post.scss";
 import postImage from "../../assets/sidebar_about_me.jpg";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const SinglePost = () => {
   return (
@@ -13,12 +13,14 @@ const SinglePost = () => {
 
       <h1 className="single-post__title">
         <span>Single Post Title</span>
-        <span className="single-post__action">
-          <FaEdit />
-        </span>
-        <span className="single-post__action">
-          <FaTrash />
-        </span>
+        <div className="single-post__actions">
+          <span className="single-post__action single-post__action--edit">
+            <FaEdit />
+          </span>
+          <span className="single-post__action single-post__action--delete">
+            <FaTrashAlt />
+          </span>
+        </div>
       </h1>
 
       <div className="single-post__info">
