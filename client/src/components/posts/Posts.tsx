@@ -1,10 +1,10 @@
-import "./postList.scss";
+import "./posts.scss";
 import Post from "../post/Post";
 
 const Posts = () => {
   return (
     <div className="posts">
-      <div className="post__grid grid__container">
+      <div className="posts__grid grid__container">
         <Post />
         <Post />
         <Post />

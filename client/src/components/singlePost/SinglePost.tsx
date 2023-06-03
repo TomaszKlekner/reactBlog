@@ -1,10 +1,14 @@
+import { useParams } from "react-router-dom";
+
 import "./single-post.scss";
 import postImage from "../../assets/sidebar_about_me.jpg";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const SinglePost = () => {
+  const { id } = useParams();
+
   return (
-    <div className="single-post">
+    <div className="single-post" id={`post-id-${id}`}>
       <img
         className="single-post__image"
         src={postImage}

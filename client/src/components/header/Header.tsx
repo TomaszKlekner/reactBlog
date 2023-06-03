@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./header.scss";
 import {
   FaFacebookSquare,
@@ -24,18 +26,43 @@ const Header = () => {
 
       <div className="header--center">
         <ul className="header__list">
-          <li className="header__list-item">Home</li>
-          <li className="header__list-item">About</li>
-          <li className="header__list-item">Contact</li>
-          <li className="header__list-item">Write</li>
-          <li className="header__list-item">Logout</li>
+          <li className="header__list-item">
+            <Link className="header__list-link" to="/">
+              Home
+            </Link>
+          </li>
+          <li className="header__list-item">
+            <Link className="header__list-link" to="/about">
+              About
+            </Link>
+          </li>
+          <li className="header__list-item">
+            <Link className="header__list-link" to="/contact">
+              Contact
+            </Link>
+          </li>
+          <li className="header__list-item">
+            <Link className="header__list-link" to="/new-post">
+              Add Post
+            </Link>
+          </li>
+          <li className="header__list-item">
+            <Link className="header__list-link" to="/register">
+              Register
+            </Link>
+          </li>
+          <li className="header__list-item">
+            <Link className="header__list-link" to="/login">
+              LogIn
+            </Link>
+          </li>
         </ul>
       </div>
 
       <div className="header--rigth">
-        <div className="user">
+        <Link className="user__link" to="/settings">
           <FaRegUserCircle />
-        </div>
+        </Link>
         <div className="search">
           <FaSearch />
         </div>
