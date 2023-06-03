@@ -4,11 +4,11 @@ import headerBg from "../../assets/header_bg.jpg";
 const Header = () => {
   return (
     <header className="header">
-      <div className="headerTitle">
-        <span className="headerTitleSecondary">React & Node</span>
-        <span className="headerTitlePrimary">Blog</span>
+      <div className="header__title">
+        <span className="header__title--secondary">React & Node</span>
+        <span className="header__title--primary">Blog</span>
       </div>
-      <img className="headerImage" src={headerBg} alt="React & Node Blog" />
+      <img className="header__image" src={headerBg} alt="React & Node Blog" />
     </header>
   );
 };

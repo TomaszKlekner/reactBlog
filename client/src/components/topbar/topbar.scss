@@ -13,12 +13,12 @@
   background-color: white;
 }
 
-.topLeft {
+.top--left {
   flex: 3;
   display: flex;
 }
 
-.topIcon {
+.top__icon {
   width: 2rem;
   height: 2rem;
   cursor: pointer;
@@ -34,17 +34,17 @@
   }
 }
 
-.topCenter {
+.top--center {
   flex: 6;
 }
 
-.topList {
+.top__list {
   display: flex;
   justify-content: center;
   align-items: center;
   list-style: none;
 
-  &Item {
+  &-item {
     font-size: 1.8rem;
     font-weight: 300;
     cursor: pointer;
@@ -56,7 +56,7 @@
   }
 }
 
-.topRigth {
+.top--rigth {
   flex: 3;
   display: flex;
 }

@@ -1,6 +1,21 @@
 .posts {
   flex: 9 0;
-  flex-wrap: wrap;
+  margin: 2rem 1rem 2rem 2rem;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+
+  &__info {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    flex: 1 0 auto;
+  }
 }
 
 @media only screen and (max-width: 600px) {

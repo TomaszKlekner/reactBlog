@@ -1,25 +1,25 @@
 .header {
-  &Title {
+  &__title {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: "Lora", serif;
     color: #444;
 
-    &Primary {
+    &--primary {
       top: 18%;
       font-size: 10rem;
       position: absolute;
     }
 
-    &Secondary {
+    &--secondary {
       top: 16%;
       font-size: 2rem;
       position: absolute;
     }
   }
 
-  &Image {
+  &__image {
     width: 100%;
     height: 45rem;
     margin-top: 8rem;

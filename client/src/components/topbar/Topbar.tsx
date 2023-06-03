@@ -10,27 +10,29 @@ import {
 const Topbar = () => {
   return (
     <div className="topbar">
-      <div className="topLeft">
-        <div className="topIcon">
+      <div className="top--left">
+        <div className="top__icon">
           <FaFacebookSquare />
         </div>
-        <div className="topIcon">
+        <div className="top__icon">
           <FaTwitterSquare />
         </div>
-        <div className="topIcon">
+        <div className="top__icon">
           <FaInstagramSquare />
         </div>
       </div>
-      <div className="topCenter">
-        <ul className="topList">
-          <li className="topListItem">Home</li>
-          <li className="topListItem">About</li>
-          <li className="topListItem">Contact</li>
-          <li className="topListItem">Write</li>
-          <li className="topListItem">Logout</li>
+
+      <div className="top--center">
+        <ul className="top__list">
+          <li className="top__list-item">Home</li>
+          <li className="top__list-item">About</li>
+          <li className="top__list-item">Contact</li>
+          <li className="top__list-item">Write</li>
+          <li className="top__list-item">Logout</li>
         </ul>
       </div>
-      <div className="topRigth">
+
+      <div className="top--rigth">
         <div className="user">
           <FaRegUserCircle />
         </div>
