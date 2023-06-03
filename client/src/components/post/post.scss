@@ -3,6 +3,12 @@
   flex-direction: column;
   flex: 1 1 100%;
 
+  &__link,
+  &__link:visited {
+    color: #333;
+    text-decoration: none;
+  }
+
   &__image {
     border-radius: 7px;
     object-fit: cover;
@@ -50,13 +56,13 @@
   &_description {
     font-family: "Varela Round", serif;
     font-size: 1.4rem;
-    line-height: 2.4rem;
+    line-height: 2.2rem;
     color: #444;
     margin-top: 1.2rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
 }
