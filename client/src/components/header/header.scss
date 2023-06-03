@@ -15,7 +15,7 @@
 }
 
 .header--left {
-  flex: 2;
+  flex: 3;
   display: flex;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .header--center {
-  flex: 8;
+  flex: 6;
 }
 
 .header__list {
@@ -65,7 +65,7 @@
 }
 
 .header--rigth {
-  flex: 2;
+  flex: 3;
   display: flex;
 }
 
@@ -73,7 +73,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 4rem;
+  width: auto;
   height: 4rem;
   padding: 1rem;
   color: #666;

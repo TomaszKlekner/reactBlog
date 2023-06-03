@@ -6,10 +6,10 @@ import Register from "./pages/register/Register";
 import Settings from "./pages/settings/Settings";
 import AddPost from "./pages/addPost/AddPost";
 import SinglePage from "./pages/singlePage/SinglePage";
-import PostList from "./pages/PostList/PostList";
+import PostList from "./pages/postList/PostList";
 
 function App() {
-  const user: boolean = false;
+  const user: boolean = true;
 
   return (
     <BrowserRouter>

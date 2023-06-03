@@ -44,14 +44,6 @@ const Header = ({ user }: Props) => {
             </li>
           )}
 
-          {!user && (
-            <li className="header__list-item">
-              <Link className="header__list-link" to="/register">
-                Register / Login
-              </Link>
-            </li>
-          )}
-
           <li className="header__list-item">
             <Link className="header__list-link" to="/contact">
               Contact
@@ -67,11 +59,25 @@ const Header = ({ user }: Props) => {
       </div>
 
       <div className="header--rigth">
-        {user && (
+        {user ? (
           <Link className="user__link" to="/settings">
             <FaRegUserCircle />
           </Link>
+        ) : (
+          <ul className="header__list">
+            <li className="header__list-item">
+              <Link className="user__link" to="/register">
+                Register
+              </Link>
+            </li>
+            <li className="header__list-item">
+              <Link className="user__link" to="/login">
+                Login
+              </Link>
+            </li>
+          </ul>
         )}
+
         <div className="search">
           <FaSearch />
         </div>
