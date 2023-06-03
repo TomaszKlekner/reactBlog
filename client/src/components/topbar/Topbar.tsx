@@ -9,7 +9,7 @@ import {
 
 const Topbar = () => {
   return (
-    <div className="topbar">
+    <div className="topbar container">
       <div className="top--left">
         <div className="top__icon">
           <FaFacebookSquare />

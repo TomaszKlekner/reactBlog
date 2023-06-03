@@ -1,0 +1,62 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+
+  &__image {
+    border-radius: 7px;
+    object-fit: cover;
+  }
+
+  &__info {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__categories {
+    margin-top: 1.2rem;
+  }
+
+  &__category {
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.1rem;
+    line-height: 2rem;
+    color: #be9656;
+    cursor: pointer;
+
+    &:not(:last-of-type) {
+      margin-right: 1.2rem;
+    }
+  }
+
+  &__title {
+    flex: 1 0 auto;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 700;
+    line-height: 2.2rem;
+    margin-top: 1.6rem;
+    cursor: pointer;
+  }
+
+  &__date {
+    font-family: "Lora", serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    flood-color: #999;
+    margin-top: 1.2rem;
+  }
+
+  &_description {
+    font-family: "Varela Round", serif;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    color: #444;
+    margin-top: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+}

@@ -1,4 +1,7 @@
 .header {
+  display: flex;
+  flex-direction: column;
+
   &__title {
     display: flex;
     flex-direction: column;

@@ -31,10 +31,23 @@ img {
   min-height: 100vh;
 }
 
-// GRID
+.container {
+  max-width: 1920px;
+  width: 100%;
+}
 
+// GRID
 .grid__container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2rem;
+
+  @media only screen and (max-width: 479px) {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+  }
+
+  @media only screen and (max-width: 1023px) {
+    grid-template-columns: 1fr 1fr;
+  }
 }

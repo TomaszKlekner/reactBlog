@@ -3,7 +3,7 @@ import headerBg from "../../assets/header_bg.jpg";
 
 const Header = () => {
   return (
-    <header className="header">
+    <header className="header container">
       <div className="header__title">
         <span className="header__title--secondary">React & Node</span>
         <span className="header__title--primary">Blog</span>
