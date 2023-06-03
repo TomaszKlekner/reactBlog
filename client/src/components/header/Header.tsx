@@ -9,7 +9,11 @@ import {
   FaSearch,
 } from "react-icons/fa";
 
-const Header = () => {
+interface Props {
+  user: boolean;
+}
+
+const Header = ({ user }: Props) => {
   return (
     <div className="header container">
       <div className="header--left">
@@ -31,38 +35,43 @@ const Header = () => {
               Home
             </Link>
           </li>
-          <li className="header__list-item">
-            <Link className="header__list-link" to="/about">
-              About
-            </Link>
-          </li>
+
+          {user && (
+            <li className="header__list-item">
+              <Link className="header__list-link" to="/new-post">
+                Add Post
+              </Link>
+            </li>
+          )}
+
+          {!user && (
+            <li className="header__list-item">
+              <Link className="header__list-link" to="/register">
+                Register / Login
+              </Link>
+            </li>
+          )}
+
           <li className="header__list-item">
             <Link className="header__list-link" to="/contact">
               Contact
             </Link>
           </li>
+
           <li className="header__list-item">
-            <Link className="header__list-link" to="/new-post">
-              Add Post
-            </Link>
-          </li>
-          <li className="header__list-item">
-            <Link className="header__list-link" to="/register">
-              Register
-            </Link>
-          </li>
-          <li className="header__list-item">
-            <Link className="header__list-link" to="/login">
-              LogIn
+            <Link className="header__list-link" to="/about">
+              About
             </Link>
           </li>
         </ul>
       </div>
 
       <div className="header--rigth">
-        <Link className="user__link" to="/settings">
-          <FaRegUserCircle />
-        </Link>
+        {user && (
+          <Link className="user__link" to="/settings">
+            <FaRegUserCircle />
+          </Link>
+        )}
         <div className="search">
           <FaSearch />
         </div>

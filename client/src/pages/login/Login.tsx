@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./login.scss";
 
 const Login = () => {
@@ -27,9 +29,13 @@ const Login = () => {
         </div>
       </form>
 
-      <button className="btn button__register  button--absolute" type="button">
+      <Link
+        to="/register"
+        className="btn button__register button--absolute"
+        type="button"
+      >
         Register
-      </button>
+      </Link>
     </div>
   );
 };

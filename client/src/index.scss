@@ -27,6 +27,11 @@ img {
   max-width: 100%;
 }
 
+a {
+  text-decoration: none;
+  line-height: normal;
+}
+
 #root {
   min-height: 100vh;
 }
@@ -44,6 +49,8 @@ img {
 .button__login,
 .button__register {
   min-width: 10rem;
+  font-size: 1.4rem;
+  text-align: center;
   color: white;
   border-radius: 6px;
   cursor: pointer;
