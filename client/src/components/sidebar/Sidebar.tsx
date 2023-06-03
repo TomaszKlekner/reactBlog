@@ -10,13 +10,14 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__item">
-        <span className="sidebar__title">About Me</span>
         <img src={sidebarAboutMe} alt="About Me" className="sidebar__image" />
+        <span className="sidebar__title">About Me</span>
         <p className="sidebar__paragraph">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus
           odio quaerat cupiditate quo consectetur minima beatae nostrum vel
           quibusdam illo?
         </p>
+        <span className="sidebar__title">About Me</span>
       </div>
 
       <div className="sidebar__item">
