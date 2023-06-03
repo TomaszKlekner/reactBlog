@@ -1,16 +1,16 @@
-import Header from "../../components/header/Header";
+import Hero from "../../components/hero/Hero";
 import Post from "../../components/post/Post";
-import Posts from "../../components/posts/Posts";
+import Posts from "../../components/postList/PostList";
 import Sidebar from "../../components/sidebar/Sidebar";
+import SinglePage from "../singlePage/SinglePage";
 import "./home.scss";
 
 const Home = () => {
   return (
     <>
-      <Header />
+      <Hero />
       <main className="home container">
-        <Posts />
-        <Sidebar />
+        <SinglePage />
       </main>
     </>
   );

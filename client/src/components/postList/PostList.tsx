@@ -1,5 +1,4 @@
-import "./posts.scss";
-import postImage from "../../assets/sidebar_about_me.jpg";
+import "./postList.scss";
 import Post from "../post/Post";
 
 const Posts = () => {

@@ -1,0 +1,13 @@
+.single-page {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 600px) {
+  .single-page {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
