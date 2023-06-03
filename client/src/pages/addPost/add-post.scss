@@ -1,0 +1,73 @@
+.add-post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem;
+
+  &__image {
+    width: 100%;
+    height: 25rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    object-fit: cover;
+  }
+
+  &-form {
+    position: relative;
+    width: 100%;
+    padding-top: 6rem;
+
+    &__group {
+      margin: 1rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &__label {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      border: 1px solid black;
+      border-radius: 50%;
+      padding: 0.5rem;
+      color: #666;
+    }
+
+    &__input {
+      &--file {
+        display: none;
+      }
+
+      &--text {
+        margin-left: 1rem;
+        padding: 1rem;
+        width: 100%;
+        border: none;
+      }
+
+      &--textarea {
+        padding: 1rem;
+        width: 100%;
+        border: none;
+      }
+    }
+
+    &__button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 1rem;
+      min-width: 14rem;
+      color: white;
+      background-color: teal;
+      border: none;
+      border-radius: 1rem;
+      cursor: pointer;
+      font-size: 1.6rem;
+    }
+  }
+}
