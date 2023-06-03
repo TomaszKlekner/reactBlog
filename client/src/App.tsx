@@ -1,12 +1,12 @@
 import Header from "./components/header/Header";
-
-import Settings from "./pages/settings/Settings";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 
 function App() {
   return (
     <>
       <Header />
-      <Settings />
+      <Register />
     </>
   );
 }

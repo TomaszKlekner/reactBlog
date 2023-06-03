@@ -5,7 +5,7 @@ import { FaUserAlt } from "react-icons/fa";
 
 const Settings = () => {
   return (
-    <div className="settings">
+    <div className="settings container">
       <div className="settings__panel">
         <div className="settings__title">
           <span className="settings__title--update">Update account</span>
