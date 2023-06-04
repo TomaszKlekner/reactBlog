@@ -2,20 +2,28 @@ import express from "express";
 import "dotenv/config";
 import morgan from "morgan";
 import helmet from "helmet";
-import { v4 as uuidv4 } from "uuid";
-import { compareAsc, format } from "date-fns";
+import mongoose from "mongoose";
+import connectDb from "./config/dbConnect.js";
+
+import authRoute from "./routes/auth.js";
 
 const PORT = process.env.PORT || 5000;
 const app = express();
 
 // Use middleware
-app.use(morgan("tiny"));
+app.use(morgan("common"));
 app.use(helmet());
+app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Home Page");
-});
+// Connect to the DB
+connectDb();
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.use("/api/auth", authRoute);
+
+mongoose.connection.once("open", () => {
+  console.log("Connected to MongoDB");
+
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
 });
