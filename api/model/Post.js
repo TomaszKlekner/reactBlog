@@ -23,8 +23,14 @@ const PostSchema = new mongoose.Schema(
       type: Array,
       required: true,
     },
+    isPublished: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Post", PostSchema);
+const PostModel = mongoose.model("Post", PostSchema);
+
+export { PostModel };
