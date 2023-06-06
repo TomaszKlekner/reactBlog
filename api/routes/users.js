@@ -43,7 +43,9 @@ router.delete("/:id", async (req, res) => {
           .then((posts) => {
             res.status(200).json(posts);
           })
-          .catch((err) => res.status(404).json("Posts not found!"));
+          .catch((err) => {
+            res.status(404).json(err);
+          });
 
         // Delete user
         await UserModel.findByIdAndDelete(user.id);
