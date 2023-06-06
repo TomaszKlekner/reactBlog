@@ -60,3 +60,23 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+// Get post
+router.get("/:id", async (req, res) => {
+  try {
+    const post = await PostModel.findById(req.params.id);
+    if (post) {
+      try {
+        res.status(200).json(post);
+      } catch (error) {
+        res.status(500).json(error);
+      }
+    } else {
+      res.status(404).json("Post not found!!");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+export default router;
