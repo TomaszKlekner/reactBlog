@@ -79,4 +79,34 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Get all posts
+router.get("/", async (req, res) => {
+  const author = req.query.author;
+  const category = req.query.category;
+
+  try {
+    let posts = [];
+
+    if (author) {
+      posts = await PostModel.find({ author });
+    } else if (category) {
+      posts = await PostModel.find({
+        categories: {
+          $in: [category],
+        },
+      });
+    } else {
+      posts = await PostModel.find();
+    }
+
+    if (posts.length) {
+      res.status(200).json(posts);
+    } else {
+      res.status(404).json("No posts were found!!!");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 export default router;
