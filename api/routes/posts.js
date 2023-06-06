@@ -41,3 +41,22 @@ router.put("/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+// Delete post
+router.delete("/:id", async (req, res) => {
+  try {
+    const post = await PostModel.findById(req.params.id);
+    if (post.author === req.body.author) {
+      try {
+        await PostModel.findByIdAndDelete(req.params.id);
+        res.status(200).json("Post has been deleted.");
+      } catch (error) {
+        res.status(500).json(error);
+      }
+    } else {
+      res.status(401).json("You are not the owner of this post!");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
