@@ -7,6 +7,7 @@ import connectDb from "./config/dbConnect.js";
 
 import authRoute from "./routes/auth.js";
 import userRoute from "./routes/users.js";
+import postRoute from "./routes/posts.js";
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -21,6 +22,7 @@ connectDb();
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/posts", postRoute);
 
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
