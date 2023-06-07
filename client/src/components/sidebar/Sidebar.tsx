@@ -17,7 +17,6 @@ const Sidebar = () => {
           odio quaerat cupiditate quo consectetur minima beatae nostrum vel
           quibusdam illo?
         </p>
-        <span className="sidebar__title">About Me</span>
       </div>
 
       <div className="sidebar__item">
