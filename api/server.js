@@ -4,6 +4,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import mongoose from "mongoose";
 import connectDb from "./config/dbConnect.js";
+import { upload } from "./config/imgUpload.js";
 
 import authRoute from "./routes/auth.js";
 import userRoute from "./routes/users.js";
@@ -20,6 +21,11 @@ app.use(express.json());
 
 // Connect to the DB
 connectDb();
+
+// Upload post images
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  res.status(200).json("File has been uploaded.");
+});
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
