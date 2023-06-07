@@ -6,10 +6,9 @@ import Register from "./pages/register/Register";
 import Settings from "./pages/settings/Settings";
 import AddPost from "./pages/addPost/AddPost";
 import SinglePage from "./pages/singlePage/SinglePage";
-import PostList from "./pages/postList/PostList";
 
 function App() {
-  const user: boolean = true;
+  const user = true;
 
   return (
     <BrowserRouter>
@@ -20,8 +19,7 @@ function App() {
         {!user && <Route path="/register" element={<Register />} />}
         {user && <Route path="/settings" element={<Settings />} />}
         {user && <Route path="/new-post" element={<AddPost />} />}
-        <Route path="/posts" element={<PostList />} />
-        <Route path="/posts/:id" element={<SinglePage />} />
+        <Route path="/posts/:title" element={<SinglePage />} />
       </Routes>
     </BrowserRouter>
   );
