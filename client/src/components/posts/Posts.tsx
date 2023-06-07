@@ -1,19 +1,18 @@
-import "./posts.scss";
+import { IPost } from "../../shared/post.model";
 import Post from "../post/Post";
+import "./posts.scss";
 
-const Posts = () => {
+interface Props {
+  posts: IPost[];
+}
+
+const Posts = ({ posts }: Props) => {
   return (
     <div className="posts">
       <div className="posts__grid grid__container">
-        <Post post={{ id: 1 }} />
-        <Post post={{ id: 2 }} />
-        <Post post={{ id: 3 }} />
-        <Post post={{ id: 4 }} />
-        <Post post={{ id: 5 }} />
-        <Post post={{ id: 6 }} />
-        <Post post={{ id: 7 }} />
-        <Post post={{ id: 8 }} />
-        <Post post={{ id: 9 }} />
+        {posts.map((post) => (
+          <Post key={post._id} post={post} />
+        ))}
       </div>
     </div>
   );
