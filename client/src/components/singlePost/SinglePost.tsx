@@ -1,54 +1,96 @@
-import { useParams } from "react-router-dom";
-
 import "./single-post.scss";
-import postImage from "../../assets/sidebar_about_me.jpg";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "../../axios";
+import { IPost } from "../../shared/post.model";
 
 const SinglePost = () => {
-  const { id } = useParams();
+  const [singlePost, setSinglePost] = useState<IPost>({} as IPost);
+  const postId = useLocation().pathname.split("/")[2];
 
-  return (
-    <div className="single-post" id={`post-id-${id}`}>
-      <img
-        className="single-post__image"
-        src={postImage}
-        alt="Single Post title"
-      />
+  useEffect(() => {
+    const getSinglePost = async () => {
+      const { data } = await axios.get(`posts/${postId}`);
+      setSinglePost(data);
+    };
 
-      <h1 className="single-post__title">
-        <span>Single Post Title</span>
-        <div className="single-post__actions">
-          <span className="single-post__action single-post__action--edit">
-            <FaEdit />
-          </span>
-          <span className="single-post__action single-post__action--delete">
-            <FaTrashAlt />
-          </span>
+    getSinglePost();
+  }, [postId]);
+
+  if (singlePost) {
+    const {
+      author,
+      description,
+      createdAt,
+      isPublished,
+      photo,
+      title,
+      categories,
+    } = singlePost;
+
+    const getSingleCategory = (categories: string[]) => {
+      if (categories.length) {
+        return categories.map((category) => {
+          return <span className="single-post__category">{category}</span>;
+        });
+      }
+    };
+
+    return (
+      <div
+        className={
+          "single-post" +
+          (isPublished
+            ? " single-post--published"
+            : " single-post--unpublished")
+        }
+        id={`post-id-${postId}`}
+      >
+        {photo && (
+          <img className="single-post__image" src={photo} alt={title} />
+        )}
+
+        <h1 className="single-post__title">
+          <span>{title}</span>
+          <div className="single-post__actions">
+            <span className="single-post__action single-post__action--edit">
+              <FaEdit />
+            </span>
+            <span className="single-post__action single-post__action--delete">
+              <FaTrashAlt />
+            </span>
+          </div>
+        </h1>
+
+        <div className="single-post__info">
+          {categories && (
+            <div className="single-post__categories">
+              {getSingleCategory(categories)}
+            </div>
+          )}
+
+          {author && (
+            <span className="single-post__author">
+              Author: <strong>{author}</strong>
+            </span>
+          )}
+
+          {createdAt && (
+            <span className="single-post__date">
+              {new Date(createdAt).toDateString()}
+            </span>
+          )}
         </div>
-      </h1>
 
-      <div className="single-post__info">
-        <span className="single-post__author">
-          Author: <strong>Author Name</strong>
-        </span>
-        <span className="single-post__date">1 hour ago</span>
+        {description && (
+          <p className="single-post__description">{description}</p>
+        )}
       </div>
-
-      <p className="single-post__description">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur
-        nisi ex veritatis explicabo fuga alias atque vel iusto maxime temporibus
-        non modi laborum blanditiis suscipit consequuntur voluptas eaque
-        molestiae sequi, repellat in ad quam molestias. Laudantium voluptas ut
-        molestias ipsam quisquam dignissimos, animi doloribus, dicta rerum aut
-        excepturi, deserunt voluptatum expedita nam ratione fugiat explicabo
-        suscipit sint labore quaerat harum quidem nihil est consequuntur.
-        Eveniet possimus magnam ex hic laborum illum atque, et ipsam. Labore
-        nulla velit nostrum tenetur, laudantium in debitis porro sequi rem, id
-        quo voluptatibus minima similique magnam quis voluptas accusantium
-        excepturi tempore enim aspernatur doloribus minus.
-      </p>
-    </div>
-  );
+    );
+  } else {
+    <p>Post was not awailable!!!</p>;
+  }
 };
 
 export default SinglePost;

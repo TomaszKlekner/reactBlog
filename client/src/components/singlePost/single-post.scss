@@ -1,4 +1,6 @@
 .single-post {
+  display: flex;
+  flex-direction: column;
   flex: 9 0;
   margin: 2rem 1rem 2rem 2rem;
 
@@ -49,14 +51,27 @@
 
   &__info {
     font-family: "Varela", sans-serif;
-    font-size: 1.6;
+    font-size: 1.6rem;
     color: #ba9656;
     margin-bottom: 2rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 
+  &__categories {
+    display: flex;
+    flex: 1 0 100%;
+  }
+
+  &__category {
+    &:not(:last-of-type) {
+      margin-right: 1rem;
+    }
+  }
+
   &__description {
+    flex: 1 0 auto;
     color: #666;
     font-size: 1.8rem;
     line-height: 2.4rem;
