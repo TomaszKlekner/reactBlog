@@ -78,8 +78,7 @@ router.get("/:id", async (req, res) => {
 
 // Get all posts
 router.get("/", async (req, res) => {
-  const author = req.query.author;
-  const category = req.query.category;
+  const { author, category } = req.query;
 
   try {
     let posts = [];
