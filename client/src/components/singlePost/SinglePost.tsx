@@ -1,6 +1,6 @@
 import "./single-post.scss";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "../../axios";
 import { IPost } from "../../shared/post.model";
@@ -10,21 +10,12 @@ const SinglePost = () => {
   const postId = useLocation().pathname.split("/")[2];
 
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
     const getSinglePost = async () => {
-      const { data } = await axios.get(`posts/${postId}`, {
-        signal: signal,
-      });
+      const { data } = await axios.get(`posts/${postId}`);
       setSinglePost(data);
     };
 
     getSinglePost();
-
-    return () => {
-      controller.abort();
-    };
   }, [postId]);
 
   if (singlePost) {
@@ -41,7 +32,11 @@ const SinglePost = () => {
     const getSingleCategory = (categories: string[]) => {
       if (categories.length) {
         return categories.map((category) => {
-          return <span className="single-post__category">{category}</span>;
+          return (
+            <span key={category} className="single-post__category">
+              {category}
+            </span>
+          );
         });
       }
     };
@@ -81,7 +76,10 @@ const SinglePost = () => {
 
           {author && (
             <span className="single-post__author">
-              Author: <strong>{author}</strong>
+              Author:{" "}
+              <Link to={`../posts/?author=${author.toLocaleLowerCase()}`}>
+                <strong>{author}</strong>
+              </Link>
             </span>
           )}
 

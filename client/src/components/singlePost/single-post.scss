@@ -59,6 +59,12 @@
     justify-content: space-between;
   }
 
+  &__author {
+    a {
+      color: #ba9656;
+    }
+  }
+
   &__categories {
     display: flex;
     flex: 1 0 100%;
