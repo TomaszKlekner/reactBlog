@@ -45,11 +45,26 @@
     cursor: pointer;
   }
 
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__date {
     font-family: "Lora", serif;
     font-style: italic;
     font-size: 1.3rem;
-    flood-color: #999;
+    color: #999;
+    margin-top: 1.2rem;
+  }
+
+  &__author {
+    font-family: "Lora", serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #be9656;
     margin-top: 1.2rem;
   }
 
