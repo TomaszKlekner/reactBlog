@@ -6,27 +6,20 @@ import Posts from "../../components/posts/Posts";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { IPost } from "../../shared/post.model";
 import "./home.scss";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
+  const { search } = useLocation();
 
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
     const fetchData = async () => {
-      const { data } = await axios.get("posts", {
-        signal: signal,
-      });
+      const { data } = await axios.get(`/posts${search}`);
       setPosts(data);
     };
 
     fetchData();
-
-    return () => {
-      controller.abort();
-    };
-  }, []);
+  }, [search]);
 
   return (
     <>
