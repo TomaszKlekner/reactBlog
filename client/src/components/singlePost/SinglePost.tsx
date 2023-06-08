@@ -10,12 +10,21 @@ const SinglePost = () => {
   const postId = useLocation().pathname.split("/")[2];
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     const getSinglePost = async () => {
-      const { data } = await axios.get(`posts/${postId}`);
+      const { data } = await axios.get(`posts/${postId}`, {
+        signal: signal,
+      });
       setSinglePost(data);
     };
 
     getSinglePost();
+
+    return () => {
+      controller.abort();
+    };
   }, [postId]);
 
   if (singlePost) {
