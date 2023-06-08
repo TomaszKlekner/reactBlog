@@ -7,7 +7,8 @@ interface Props {
 }
 
 const Post = ({ post }: Props) => {
-  const { _id, title, description, photo, categories, createdAt } = post;
+  const { _id, title, description, photo, categories, createdAt, author } =
+    post;
 
   return (
     <div className="post">
@@ -18,19 +19,27 @@ const Post = ({ post }: Props) => {
             <Link
               key={category}
               className="post__category"
-              to={`posts/?category=${category}`}
+              to={`/?category=${category}`}
             >
               {category}
             </Link>
           ))}
         </div>
+
         <h3 className="post__title">
           <Link className="post__link" to={`posts/${_id}`}>
             {title}
           </Link>
         </h3>
         <hr />
-        <span className="post__date">{new Date(createdAt).toDateString()}</span>
+        <div className="post__data">
+          <span className="post__date">
+            {new Date(createdAt).toDateString()}
+          </span>
+          <Link className="post__author" to={`/?author=${author}`}>
+            {author}
+          </Link>
+        </div>
       </div>
       <p className="post_description">{description}</p>
     </div>
