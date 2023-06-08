@@ -14,21 +14,12 @@ const Sidebar = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
 
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
     const fetchCategories = async () => {
-      const { data } = await axios.get("categories", {
-        signal: signal,
-      });
+      const { data } = await axios.get("/categories");
       setCategories(data);
     };
 
     fetchCategories();
-
-    return () => {
-      controller.abort();
-    };
   }, []);
 
   return (
@@ -43,18 +34,22 @@ const Sidebar = () => {
         </p>
       </div>
 
-      <div className="sidebar__item">
-        <span className="sidebar__title">Categories</span>
-        <ul className="sidebar__list">
-          {categories.map((category) => (
-            <li key={category.id} className="sidebar__list-item">
-              <Link to={`posts?category=${category.name.toLocaleLowerCase()}`}>
-                {category.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {categories && (
+        <div className="sidebar__item">
+          <span className="sidebar__title">Categories</span>
+          <ul className="sidebar__list">
+            {categories.map((category) => (
+              <li key={category._id} className="sidebar__list-item">
+                <Link
+                  to={`posts?category=${category.name.toLocaleLowerCase()}`}
+                >
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="sidebar__item">
         <span className="sidebar__title">Follow Us</span>
