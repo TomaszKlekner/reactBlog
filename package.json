@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "client-install": "npm install --prefix client",
+    "api-install": "npm install --prefix api",
     "client": "npm run dev --prefix client",
     "api": "npm run devserver --prefix api",
     "dev": "concurrently \"npm run api\" \"npm run client\""
