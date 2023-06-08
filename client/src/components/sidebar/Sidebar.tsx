@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import axios from "../../axios";
 import "./sidebar.scss";
 import sidebarAboutMe from "../../assets/sidebar_about_me.jpg";
 import {
@@ -5,8 +7,30 @@ import {
   FaInstagramSquare,
   FaTwitterSquare,
 } from "react-icons/fa";
+import { ICategory } from "../../shared/category.model";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  const [categories, setCategories] = useState<ICategory[]>([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const fetchCategories = async () => {
+      const { data } = await axios.get("categories", {
+        signal: signal,
+      });
+      setCategories(data);
+    };
+
+    fetchCategories();
+
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
   return (
     <div className="sidebar">
       <div className="sidebar__item">
@@ -22,12 +46,13 @@ const Sidebar = () => {
       <div className="sidebar__item">
         <span className="sidebar__title">Categories</span>
         <ul className="sidebar__list">
-          <li className="sidebar__list-item">Life</li>
-          <li className="sidebar__list-item">Music</li>
-          <li className="sidebar__list-item">Style</li>
-          <li className="sidebar__list-item">Sport</li>
-          <li className="sidebar__list-item">Tech</li>
-          <li className="sidebar__list-item">Cinema</li>
+          {categories.map((category) => (
+            <li key={category.id} className="sidebar__list-item">
+              <Link to={`posts?category=${category.name.toLocaleLowerCase()}`}>
+                {category.name}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
