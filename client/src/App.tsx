@@ -6,6 +6,7 @@ import Register from "./pages/register/Register";
 import Settings from "./pages/settings/Settings";
 import AddPost from "./pages/addPost/AddPost";
 import SinglePage from "./pages/singlePage/SinglePage";
+import PageNotFound from "./pages/pageNotFound/PageNotFound";
 
 function App() {
   const user = true;
@@ -20,6 +21,7 @@ function App() {
         {user && <Route path="/settings" element={<Settings />} />}
         {user && <Route path="/new-post" element={<AddPost />} />}
         <Route path="/posts/:title" element={<SinglePage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );
