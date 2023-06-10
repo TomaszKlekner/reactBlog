@@ -9,7 +9,7 @@ import SinglePage from "./pages/singlePage/SinglePage";
 import PageNotFound from "./pages/pageNotFound/PageNotFound";
 
 function App() {
-  const user = true;
+  const user = false;
 
   return (
     <BrowserRouter>

@@ -54,6 +54,13 @@ a {
   color: white;
   border-radius: 6px;
   cursor: pointer;
+
+  &:disabled {
+    color: #999;
+    background-color: #ccc;
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
 }
 
 .button__login {
