@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./header.scss";
 import {
@@ -9,12 +9,26 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import CUser from "../../shared/user.model";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+import { UserActionType } from "../../context/UserActions";
 
 interface Props {
   user: CUser | null;
 }
 
 const Header = ({ user }: Props) => {
+  const { dispatch } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch({
+      type: UserActionType.LOGOUT,
+      payload: null,
+    });
+    navigate("/login");
+  };
+
   return (
     <div className="header container">
       <div className="header--left">
@@ -56,6 +70,14 @@ const Header = ({ user }: Props) => {
               About
             </Link>
           </li>
+
+          {user && (
+            <li className="header__list-item">
+              <a className="header__list-link" onClick={handleLogout}>
+                Logout
+              </a>
+            </li>
+          )}
         </ul>
       </div>
 
