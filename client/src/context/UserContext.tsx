@@ -1,29 +1,7 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import CUser from "../shared/user.model";
 import userReducer from "./UserReducer";
-
-export enum UserActionType {
-  LOGIN_START = "LOGIN_START",
-  LOGIN_SUCCESS = "LOGIN_SUCCESS",
-  LOGIN_ERROR = "LOGIN_ERROR",
-}
-
-export type UserActionLogin = {
-  type: UserActionType.LOGIN_START;
-  payload: null;
-};
-
-export type UserActionSuccess = {
-  type: UserActionType.LOGIN_SUCCESS;
-  payload: CUser;
-};
-
-export type UserActionError = {
-  type: UserActionType.LOGIN_ERROR;
-  payload: null;
-};
-
-export type UserAction = UserActionLogin | UserActionSuccess | UserActionError;
+import { UserAction } from "./UserActions";
 
 export type UserState = {
   user: CUser | null;
@@ -32,7 +10,7 @@ export type UserState = {
 };
 
 const initialState: UserState = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("user") || "{}") || null,
   loading: false,
   error: false,
 };
@@ -53,6 +31,10 @@ interface Props {
 
 export const UserProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(userReducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(state.user));
+  }, [state.user]);
 
   return (
     <UserContext.Provider value={{ state, dispatch }}>
