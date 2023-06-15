@@ -8,9 +8,10 @@ import {
   FaRegUserCircle,
   FaSearch,
 } from "react-icons/fa";
+import CUser from "../../shared/user.model";
 
 interface Props {
-  user: boolean;
+  user: CUser | null;
 }
 
 const Header = ({ user }: Props) => {
