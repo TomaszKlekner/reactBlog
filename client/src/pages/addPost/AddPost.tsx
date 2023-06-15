@@ -1,8 +1,13 @@
 import { FaPlus } from "react-icons/fa";
 import heroBg from "../../assets/hero_bg.jpg";
 import "./add-post.scss";
+import CUser from "../../shared/user.model";
 
-const Write = () => {
+interface Props {
+  user: CUser | null;
+}
+
+const Write = ({ user }: Props) => {
   return (
     <div className="add-post container">
       <img src={heroBg} alt="" className="add-post__image" />

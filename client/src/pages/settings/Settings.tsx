@@ -2,8 +2,13 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import sidebarAboutMe from "../../assets/sidebar_about_me.jpg";
 import "./setting.scss";
 import { FaUserAlt } from "react-icons/fa";
+import CUser from "../../shared/user.model";
 
-const Settings = () => {
+interface Props {
+  user: CUser | null;
+}
+
+const Settings = ({ user }: Props) => {
   return (
     <div className="settings container">
       <div className="settings__panel">
@@ -16,8 +21,8 @@ const Settings = () => {
             <label>Profile Picture</label>
             <div className="settings__profile--update">
               <img
-                src={sidebarAboutMe}
-                alt="About Me"
+                src={user?.profilePicture || sidebarAboutMe}
+                alt={user?.username}
                 className="settings__profile-picture"
                 title="Profile picture"
               />
@@ -37,10 +42,10 @@ const Settings = () => {
 
             <div className="settings__profile--details">
               <label htmlFor="">Username</label>
-              <input type="text" />
+              <input type="text" value={user?.username} />
 
               <label htmlFor="">Email</label>
-              <input type="email" />
+              <input type="email" value={user?.email} />
 
               <label htmlFor="">Password</label>
               <input type="password" />

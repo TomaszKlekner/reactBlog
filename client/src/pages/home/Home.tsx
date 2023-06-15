@@ -7,8 +7,13 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { IPost } from "../../shared/post.model";
 import "./home.scss";
 import { useLocation } from "react-router-dom";
+import CUser from "../../shared/user.model";
 
-const Home = () => {
+interface Props {
+  user: CUser | null;
+}
+
+const Home = ({ user }: Props) => {
   const [posts, setPosts] = useState<IPost[]>([]);
   const { search } = useLocation();
 
