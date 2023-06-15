@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
 import { useContext, useRef } from "react";
-import { UserActionType, UserContext } from "../../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 import axios from "../../axios";
 import CUser from "../../shared/user.model";
+import { UserActionType } from "../../context/UserActions";
 
 const Login = () => {
   const userRef = useRef<HTMLInputElement>(null);
