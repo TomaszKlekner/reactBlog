@@ -1,4 +1,5 @@
-import { UserAction, UserActionType, UserState } from "./UserContext";
+import { UserAction, UserActionType } from "./UserActions";
+import { UserState } from "./UserContext";
 
 const userReducer = (state: UserState, action: UserAction) => {
   const { type, payload } = action;
@@ -23,6 +24,13 @@ const userReducer = (state: UserState, action: UserAction) => {
         user: null,
         loading: false,
         error: true,
+      };
+    case UserActionType.LOGOUT:
+      return {
+        ...state,
+        user: null,
+        loading: false,
+        error: false,
       };
     default:
       return state;
