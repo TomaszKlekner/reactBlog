@@ -42,7 +42,7 @@ type UserContextType = {
   dispatch: React.Dispatch<UserAction>;
 };
 
-const UserContext = createContext<UserContextType>({
+export const UserContext = createContext<UserContextType>({
   state: initialState,
   dispatch: () => null,
 });
