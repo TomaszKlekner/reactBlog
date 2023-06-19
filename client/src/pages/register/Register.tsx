@@ -15,7 +15,7 @@ const Register = () => {
     setError(false);
 
     try {
-      const newUser = new CUser(username, email, password);
+      const newUser = new CUser(username, email, password, "");
       const { data } = await axios.post("/auth/register", newUser);
       setUsername("");
       setEmail("");
@@ -62,6 +62,7 @@ const Register = () => {
             type="password"
             id="password"
             placeholder="Enter your password"
+            autoComplete="current-password"
           />
         </div>
 
