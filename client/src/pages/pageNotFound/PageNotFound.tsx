@@ -1,10 +1,4 @@
-import CUser from "../../shared/user.model";
-
-interface Props {
-  user: CUser | null;
-}
-
-const PageNotFound = ({ user }: Props) => {
+const PageNotFound = () => {
   return <div>PageNotFound</div>;
 };
 

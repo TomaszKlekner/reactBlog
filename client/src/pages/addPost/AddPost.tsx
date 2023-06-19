@@ -3,11 +3,7 @@ import heroBg from "../../assets/hero_bg.jpg";
 import "./add-post.scss";
 import CUser from "../../shared/user.model";
 
-interface Props {
-  user: CUser | null;
-}
-
-const Write = ({ user }: Props) => {
+const Write = () => {
   return (
     <div className="add-post container">
       <img src={heroBg} alt="" className="add-post__image" />
