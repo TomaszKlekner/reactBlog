@@ -8,39 +8,24 @@ import AddPost from "./pages/addPost/AddPost";
 import SinglePage from "./pages/singlePage/SinglePage";
 import PageNotFound from "./pages/pageNotFound/PageNotFound";
 import { UserContext } from "./context/UserContext";
+import { useContext } from "react";
 
 function App() {
+  const {
+    state: { user },
+  } = useContext(UserContext);
   return (
     <BrowserRouter>
-      <UserContext.Consumer>
-        {({ state }) => (
-          <>
-            <Header user={state.user} />
-            <Routes>
-              <Route path="/" element={<Home user={state.user} />} />
-              {!state.user && <Route path="/login" element={<Login />} />}
-              {!state.user && <Route path="/register" element={<Register />} />}
-              {state.user && (
-                <Route
-                  path="/settings"
-                  element={<Settings user={state.user} />}
-                />
-              )}
-              {state.user && (
-                <Route
-                  path="/new-post"
-                  element={<AddPost user={state.user} />}
-                />
-              )}
-              <Route
-                path="/posts/:title"
-                element={<SinglePage user={state.user} />}
-              />
-              <Route path="*" element={<PageNotFound user={state.user} />} />
-            </Routes>
-          </>
-        )}
-      </UserContext.Consumer>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {!user && <Route path="/login" element={<Login />} />}
+        {!user && <Route path="/register" element={<Register />} />}
+        {user && <Route path="/settings" element={<Settings />} />}
+        {user && <Route path="/new-post" element={<AddPost />} />}
+        <Route path="/posts/:title" element={<SinglePage />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
     </BrowserRouter>
   );
 }
