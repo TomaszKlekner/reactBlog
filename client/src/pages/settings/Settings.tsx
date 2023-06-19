@@ -2,13 +2,14 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import sidebarAboutMe from "../../assets/sidebar_about_me.jpg";
 import "./setting.scss";
 import { FaUserAlt } from "react-icons/fa";
-import CUser from "../../shared/user.model";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
-interface Props {
-  user: CUser | null;
-}
+const Settings = () => {
+  const {
+    state: { user },
+  } = useContext(UserContext);
 
-const Settings = ({ user }: Props) => {
   return (
     <div className="settings container">
       <div className="settings__panel">
@@ -41,14 +42,18 @@ const Settings = ({ user }: Props) => {
             </div>
 
             <div className="settings__profile--details">
-              <label htmlFor="">Username</label>
-              <input type="text" value={user?.username} />
+              <label htmlFor="username">Username</label>
+              <input id="username" type="text" defaultValue={user?.username} />
 
-              <label htmlFor="">Email</label>
-              <input type="email" value={user?.email} />
+              <label htmlFor="email">Email</label>
+              <input id="email" type="email" defaultValue={user?.email} />
 
-              <label htmlFor="">Password</label>
-              <input type="password" />
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                autoComplete="current-password"
+              />
             </div>
 
             <button type="submit" className="settings__submit">
