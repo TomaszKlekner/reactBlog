@@ -9,11 +9,18 @@ import { UserActionType } from "../../context/UserActions";
 const Login = () => {
   const userRef = useRef<HTMLInputElement>(null);
   const passswordRef = useRef<HTMLInputElement>(null);
-  const { dispatch } = useContext(UserContext);
+  const {
+    dispatch,
+    state: { loading },
+  } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch({
+      type: UserActionType.LOGIN_START,
+      payload: null,
+    });
 
     if (userRef.current?.value === "") {
       alert("Username can't be empty!!!");
@@ -66,11 +73,16 @@ const Login = () => {
             type="password"
             id="password"
             placeholder="Enter your password"
+            autoComplete="current-password"
           />
         </div>
 
         <div className="form-group">
-          <button className="btn button__login" type="submit">
+          <button
+            className="btn button__login"
+            type="submit"
+            disabled={loading}
+          >
             Login
           </button>
         </div>
