@@ -8,17 +8,16 @@ import {
   FaRegUserCircle,
   FaSearch,
 } from "react-icons/fa";
-import CUser from "../../shared/user.model";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { UserActionType } from "../../context/UserActions";
 
-interface Props {
-  user: CUser | null;
-}
+const Header = () => {
+  const {
+    state: { user },
+    dispatch,
+  } = useContext(UserContext);
 
-const Header = ({ user }: Props) => {
-  const { dispatch } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
