@@ -10,12 +10,16 @@ const Post = ({ post }: Props) => {
   const { _id, title, description, photo, categories, createdAt, author } =
     post;
 
+  const PublicFolder = "http://localhost:5000/images/";
+
   return (
     <div className="post">
-      {photo && <img className="post__image" src={photo} alt={title} />}
+      {photo && (
+        <img className="post__image" src={PublicFolder + photo} alt={title} />
+      )}
       <div className="post__info">
         <div className="post__categories">
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <Link
               key={category}
               className="post__category"
@@ -33,9 +37,11 @@ const Post = ({ post }: Props) => {
         </h3>
         <hr />
         <div className="post__data">
-          <span className="post__date">
-            {new Date(createdAt).toDateString()}
-          </span>
+          {createdAt && (
+            <span className="post__date">
+              {new Date(createdAt).toDateString()}
+            </span>
+          )}
           <Link className="post__author" to={`/?author=${author}`}>
             {author}
           </Link>
