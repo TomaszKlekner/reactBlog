@@ -23,7 +23,7 @@ function App() {
         {!user && <Route path="/register" element={<Register />} />}
         {user && <Route path="/settings" element={<Settings />} />}
         {user && <Route path="/new-post" element={<AddPost />} />}
-        <Route path="/posts/:title" element={<SinglePage />} />
+        <Route path="/posts/:id" element={<SinglePage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
