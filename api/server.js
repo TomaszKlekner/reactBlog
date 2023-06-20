@@ -1,4 +1,6 @@
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 import "dotenv/config";
 import morgan from "morgan";
 import helmet from "helmet";
@@ -14,12 +16,15 @@ import categoryRoute from "./routes/categories.js";
 
 const PORT = process.env.PORT || 5000;
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Use middleware
 app.use(cors());
 app.use(morgan("common"));
 app.use(helmet());
 app.use(express.json());
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 // Connect to the DB
 connectDb();
