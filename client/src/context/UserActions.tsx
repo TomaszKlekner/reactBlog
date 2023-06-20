@@ -1,3 +1,4 @@
+import { IPost } from "../shared/post.model";
 import CUser from "../shared/user.model";
 
 export enum UserActionType {
@@ -5,6 +6,7 @@ export enum UserActionType {
   LOGIN_SUCCESS = "LOGIN_SUCCESS",
   LOGIN_ERROR = "LOGIN_ERROR",
   LOGOUT = "LOGOUT",
+  ADD_POST = "ADD_POST",
 }
 
 type UserActionLogin = {
@@ -27,8 +29,14 @@ type UserActionLogout = {
   payload: null;
 };
 
+type UserActionAddPost = {
+  type: UserActionType.ADD_POST;
+  payload: IPost;
+};
+
 export type UserAction =
   | UserActionLogin
   | UserActionSuccess
   | UserActionError
-  | UserActionLogout;
+  | UserActionLogout
+  | UserActionAddPost;
