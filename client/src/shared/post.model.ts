@@ -1,11 +1,11 @@
 export interface IPost {
-  _id: string;
+  _id?: string;
+  author: string;
   title: string;
   description: string;
-  photo: string;
-  author: string;
-  categories: string[];
+  photo?: string;
+  categories?: string[];
   isPublished: boolean;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
