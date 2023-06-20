@@ -32,6 +32,13 @@ const userReducer = (state: UserState, action: UserAction) => {
         loading: false,
         error: false,
       };
+    case UserActionType.ADD_POST:
+      return {
+        ...state,
+        user: null,
+        loading: false,
+        error: false,
+      };
     default:
       return state;
   }
