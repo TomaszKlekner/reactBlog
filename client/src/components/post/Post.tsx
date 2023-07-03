@@ -9,13 +9,12 @@ interface Props {
 const Post = ({ post }: Props) => {
   const { _id, title, description, photo, categories, createdAt, author } =
     post;
-
   const PublicFolder = "http://localhost:5000/images/";
 
   return (
     <div className="post">
       {photo && (
-        <img className="post__image" src={PublicFolder + photo} alt={title} />
+        <img crossOrigin="anonymous" className="post__image" src={PublicFolder + photo} alt={title} />
       )}
       <div className="post__info">
         <div className="post__categories">
