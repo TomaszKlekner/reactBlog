@@ -1,13 +1,19 @@
 import "./single-post.scss";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "../../axios";
 import { IPost } from "../../shared/post.model";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 const SinglePost = () => {
   const [singlePost, setSinglePost] = useState<IPost>({} as IPost);
+  const {
+    state: { user },
+  } = useContext(UserContext);
   const postId = useLocation().pathname.split("/")[2];
+  const navigate = useNavigate();
 
   const PublicFolder = "http://localhost:5000/images/";
 
@@ -19,6 +25,17 @@ const SinglePost = () => {
 
     getSinglePost();
   }, [postId]);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete("/posts/" + postId, {
+        data: { author: user?.username },
+      });
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   if (singlePost) {
     const {
@@ -64,14 +81,20 @@ const SinglePost = () => {
 
         <h1 className="single-post__title">
           <span>{title}</span>
-          <div className="single-post__actions">
-            <span className="single-post__action single-post__action--edit">
-              <FaEdit />
-            </span>
-            <span className="single-post__action single-post__action--delete">
-              <FaTrashAlt />
-            </span>
-          </div>
+
+          {author === user?.username && (
+            <div className="single-post__actions">
+              <span className="single-post__action single-post__action--edit">
+                <FaEdit />
+              </span>
+              <span
+                onClick={handleDelete}
+                className="single-post__action single-post__action--delete"
+              >
+                <FaTrashAlt />
+              </span>
+            </div>
+          )}
         </h1>
 
         <div className="single-post__info">
