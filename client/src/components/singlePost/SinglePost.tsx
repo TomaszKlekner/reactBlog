@@ -54,7 +54,12 @@ const SinglePost = () => {
         id={`post-id-${postId}`}
       >
         {photo && (
-          <img crossOrigin="anonymous" className="single-post__image" src={PublicFolder + photo} alt={title} />
+          <img
+            crossOrigin="anonymous"
+            className="single-post__image"
+            src={PublicFolder + photo}
+            alt={title}
+          />
         )}
 
         <h1 className="single-post__title">
