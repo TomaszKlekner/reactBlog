@@ -41,7 +41,7 @@ const Sidebar = () => {
             {categories.map((category) => (
               <li key={category._id} className="sidebar__list-item">
                 <Link
-                  to={`posts?category=${category.name.toLocaleLowerCase()}`}
+                  to={`../posts?category=${category.name.toLocaleLowerCase()}`}
                 >
                   {category.name}
                 </Link>
