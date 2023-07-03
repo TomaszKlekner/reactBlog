@@ -9,6 +9,8 @@ const SinglePost = () => {
   const [singlePost, setSinglePost] = useState<IPost>({} as IPost);
   const postId = useLocation().pathname.split("/")[2];
 
+  const PublicFolder = "http://localhost:5000/images/";
+
   useEffect(() => {
     const getSinglePost = async () => {
       const { data } = await axios.get(`posts/${postId}`);
@@ -52,7 +54,7 @@ const SinglePost = () => {
         id={`post-id-${postId}`}
       >
         {photo && (
-          <img className="single-post__image" src={photo} alt={title} />
+          <img crossOrigin="anonymous" className="single-post__image" src={PublicFolder + photo} alt={title} />
         )}
 
         <h1 className="single-post__title">
