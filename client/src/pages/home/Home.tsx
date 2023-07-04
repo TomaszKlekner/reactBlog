@@ -15,7 +15,9 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(`/posts${search}`);
-      setPosts(data);
+      if (data) {
+        setPosts(data);
+      }
     };
 
     fetchData();
@@ -25,7 +27,13 @@ const Home = () => {
     <>
       <Hero />
       <main className="home container">
-        <Posts posts={posts} />
+        {posts.length ? (
+          <Posts posts={posts} />
+        ) : (
+          <div className="no-posts">
+            <h2>No Posts to display!</h2>
+          </div>
+        )}
         <Sidebar />
       </main>
     </>

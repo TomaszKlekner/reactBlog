@@ -5,6 +5,11 @@
   flex-direction: row;
 }
 
+.no-posts {
+  flex: 9 0;
+  margin: 2rem 1rem 2rem 2rem;
+}
+
 @media only screen and (max-width: 600px) {
   .home {
     flex-direction: column;
