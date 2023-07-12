@@ -14,6 +14,9 @@ const SinglePost = () => {
   } = useContext(UserContext);
   const postId = useLocation().pathname.split("/")[2];
   const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [editMode, setEditMode] = useState(false);
 
   const PublicFolder = "http://localhost:5000/images/";
 
@@ -21,6 +24,8 @@ const SinglePost = () => {
     const getSinglePost = async () => {
       const { data } = await axios.get(`posts/${postId}`);
       setSinglePost(data);
+      setTitle(data.title);
+      setDescription(data.description);
     };
 
     getSinglePost();
@@ -32,6 +37,20 @@ const SinglePost = () => {
         data: { author: user?.username },
       });
       navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUpdate = async () => {
+    try {
+      await axios.put("/posts/" + postId, {
+        author: user?.username,
+        title,
+        description,
+      });
+      setEditMode(false);
+      navigate(0);
     } catch (error) {
       console.log(error);
     }
@@ -79,12 +98,26 @@ const SinglePost = () => {
           />
         )}
 
-        <h1 className="single-post__title">
-          <span>{title}</span>
+        <div className="single-post__heading">
+          {editMode ? (
+            <input
+              className="single-post__title"
+              type="text"
+              defaultValue={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          ) : (
+            <h1 className="single-post__title">
+              <span>{title}</span>
+            </h1>
+          )}
 
-          {author === user?.username && (
+          {author === user?.username && !editMode && (
             <div className="single-post__actions">
-              <span className="single-post__action single-post__action--edit">
+              <span
+                onClick={() => setEditMode(true)}
+                className="single-post__action single-post__action--edit"
+              >
                 <FaEdit />
               </span>
               <span
@@ -95,7 +128,7 @@ const SinglePost = () => {
               </span>
             </div>
           )}
-        </h1>
+        </div>
 
         <div className="single-post__info">
           {categories && (
@@ -120,8 +153,20 @@ const SinglePost = () => {
           )}
         </div>
 
-        {description && (
+        {description && editMode ? (
+          <textarea
+            onChange={(e) => setDescription(e.target.value)}
+            className="single-post__description"
+            defaultValue={description}
+          />
+        ) : (
           <p className="single-post__description">{description}</p>
+        )}
+
+        {editMode && (
+          <button onClick={handleUpdate} className="btn single-post__update">
+            Update
+          </button>
         )}
       </div>
     );
