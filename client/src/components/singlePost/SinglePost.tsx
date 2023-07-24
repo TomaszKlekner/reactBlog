@@ -32,13 +32,19 @@ const SinglePost = () => {
   }, [postId]);
 
   const handleDelete = async () => {
-    try {
-      await axios.delete("/posts/" + postId, {
-        data: { author: user?.username },
-      });
-      navigate("/");
-    } catch (error) {
-      console.log(error);
+    const confirmDelete = confirm(
+      "Are you sure you want to delete this blog post?"
+    );
+
+    if (confirmDelete) {
+      try {
+        await axios.delete("/posts/" + postId, {
+          data: { author: user?.username },
+        });
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -164,9 +170,17 @@ const SinglePost = () => {
         )}
 
         {editMode && (
-          <button onClick={handleUpdate} className="btn single-post__update">
-            Update
-          </button>
+          <div className="single-post__edit-controls">
+            <button
+              onClick={() => setEditMode(false)}
+              className="btn single-post__cancel"
+            >
+              Cancle
+            </button>
+            <button onClick={handleUpdate} className="btn single-post__update">
+              Update
+            </button>
+          </div>
         )}
       </div>
     );
